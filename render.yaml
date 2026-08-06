@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: markitdown-pdf-converter
+    env: python
+    region: oregon
+    buildCommand: "pip install -r requirements.txt && pip install -e packages/markitdown"
+    startCommand: "uvicorn web_app.server:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
